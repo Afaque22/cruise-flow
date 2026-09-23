@@ -28,7 +28,7 @@ export function Navbar() {
           <img
             src={headerLogo}
             alt="CruiseFlow - Your voyage starts here"
-            className="h-14 w-[320px] object-cover object-left transition-transform duration-200 group-hover:scale-[1.02]"
+            className="h-14 w-[280px] object-cover object-left transition-transform duration-200 group-hover:scale-[1.02]"
           />
         </Link>
         <nav className="hidden items-center gap-1 md:flex">
@@ -74,31 +74,26 @@ export function Navbar() {
             Search cruises
           </Link>
         </div>
-  
-       <button
-  type="button"
-  aria-label={
-    isMobileMenuOpen
-      ? "Close navigation menu"
-      : "Open navigation menu"
-  }
-  aria-expanded={isMobileMenuOpen}
-  onClick={() =>
-    setIsMobileMenuOpen((current) => !current)
-  }
-  className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border transition-all duration-200 md:hidden ${
-    isMobileMenuOpen
-      ? "border-white/20 bg-white text-slate-950 shadow-lg"
-      : "border-white/15 bg-white/10 text-white hover:border-white/25 hover:bg-white/15"
-  }`}
->
-  {isMobileMenuOpen ? (
-    <X size={21} strokeWidth={2.2} />
-  ) : (
-    <Menu size={21} strokeWidth={2.2} />
-  )}
-</button>
-     
+
+        <button
+          type="button"
+          aria-label={
+            isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"
+          }
+          aria-expanded={isMobileMenuOpen}
+          onClick={() => setIsMobileMenuOpen((current) => !current)}
+          className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border transition-all duration-200 md:hidden ${
+            isMobileMenuOpen
+              ? "border-white/20 bg-white text-slate-950 shadow-lg"
+              : "border-white/15 bg-white/10 text-white hover:border-white/25 hover:bg-white/15"
+          }`}
+        >
+          {isMobileMenuOpen ? (
+            <X size={21} strokeWidth={2.2} />
+          ) : (
+            <Menu size={21} strokeWidth={2.2} />
+          )}
+        </button>
       </div>
 
       {isMobileMenuOpen && (

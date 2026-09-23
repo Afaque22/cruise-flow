@@ -290,7 +290,6 @@ function BookingSummary({
         <img
           src={cruise.image}
           alt={cruise.name}
-          loading="lazy"
           decoding="async"
           className="h-36 w-full object-cover"
         />

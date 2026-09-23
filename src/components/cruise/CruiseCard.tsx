@@ -25,7 +25,6 @@ export function CruiseCard({ cruise, selectedDate }: CruiseCardProps) {
           <img
             src={cruise.image}
             alt={cruise.name}
-            loading="lazy"
             decoding="async"
             className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
           />

@@ -1,7 +1,7 @@
 import { Menu, Search, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import headerLogo from '../../assets/header-logo.png';
+import headerLogo from "../../assets/header-logo.png";
 
 export function Navbar() {
   const location = useLocation();
@@ -31,7 +31,6 @@ export function Navbar() {
             className="h-14 w-[320px] object-cover object-left transition-transform duration-200 group-hover:scale-[1.02]"
           />
         </Link>
-
         <nav className="hidden items-center gap-1 md:flex">
           <Link
             to="/search"
@@ -66,7 +65,6 @@ export function Navbar() {
             Deals
           </Link>
         </nav>
-
         <div className="hidden items-center gap-3 md:flex">
           <Link
             to="/search"
@@ -76,7 +74,7 @@ export function Navbar() {
             Search cruises
           </Link>
         </div>
-
+  
         <button
           type="button"
           aria-label={
@@ -84,10 +82,19 @@ export function Navbar() {
           }
           aria-expanded={isMobileMenuOpen}
           onClick={() => setIsMobileMenuOpen((current) => !current)}
-          className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-200 transition hover:bg-white/10 md:hidden"
+          className={`flex h-11 w-11 items-center justify-center rounded-xl border transition-all duration-200 md:hidden ${
+            isMobileMenuOpen
+              ? "border-white/20 bg-white text-slate-950 shadow-lg"
+              : "border-white/15 bg-white/10 text-white hover:border-white/25 hover:bg-white/15"
+          }`}
         >
-          {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          {isMobileMenuOpen ? (
+            <X size={21} strokeWidth={2.2} />
+          ) : (
+            <Menu size={21} strokeWidth={2.2} />
+          )}
         </button>
+     
       </div>
 
       {isMobileMenuOpen && (

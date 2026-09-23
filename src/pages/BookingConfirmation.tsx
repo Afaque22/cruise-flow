@@ -264,7 +264,6 @@ export function BookingConfirmation() {
             <img
               src={cruise.image}
               alt={cruise.name}
-              loading="lazy"
               decoding="async"
               className="h-52 w-full object-cover sm:h-64"
             />

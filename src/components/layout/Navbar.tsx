@@ -1,7 +1,7 @@
 import { Menu, Search, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import headerLogo from "../assets/header-logo.png";
+import headerLogo from '../../assets/header-logo.png';
 
 export function Navbar() {
   const location = useLocation();

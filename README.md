@@ -51,6 +51,6 @@ src/
 
 This is a frontend demo. Cruise availability, booking, and payment are simulated using local mock data and session storage.
 
-**Live Demo:** https://cruise-flow-phl9.vercel.app/
+**Live Demo:** https://cruise-flow-eight.vercel.app/
 
 **Repository:** https://github.com/Afaque22/cruise-flow

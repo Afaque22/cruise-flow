@@ -1,75 +1,56 @@
-# React + TypeScript + Vite
+# CruiseFlow
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CruiseFlow is a modern cruise search and booking platform built as a frontend assessment project.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* Cruise search and filtering
+* Cruise details and itinerary
+* Interactive deck-based cabin selection
+* Multiple cabin selection
+* Multi-step checkout
+* Guest details and payment UI
+* Booking review and confirmation
+* Responsive design with mobile navigation
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* React + TypeScript
+* Vite
+* Tailwind CSS
+* React Router
+* React Hook Form + Zod
+* Lucide React
+* React Day Picker
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+For a production build:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm run build
 ```
+
+## Project Structure
+
+```text
+src/
+├── components/   # Reusable UI components
+├── pages/        # Application pages
+├── data/         # Mock cruise and cabin data
+├── services/     # Data/business logic
+└── types/        # TypeScript types
+```
+
+## Note
+
+This is a frontend demo. Cruise availability, booking, and payment are simulated using local mock data and session storage.
+
+**Live Demo:** https://cruise-flow-phl9.vercel.app/
+
+**Repository:** https://github.com/Afaque22/cruise-flow

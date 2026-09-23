@@ -1,6 +1,7 @@
 import { Menu, Search, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
+import headerLogo from "../assets/header-logo.png";
 
 export function Navbar() {
   const location = useLocation();
@@ -25,7 +26,7 @@ export function Navbar() {
           className="group flex shrink-0 items-center"
         >
           <img
-            src="/src/assets/header-logo.png"
+            src={headerLogo}
             alt="CruiseFlow - Your voyage starts here"
             className="h-14 w-[320px] object-cover object-left transition-transform duration-200 group-hover:scale-[1.02]"
           />

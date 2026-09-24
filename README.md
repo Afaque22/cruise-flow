@@ -19,7 +19,7 @@ CruiseFlow is a modern cruise search and booking platform built as a frontend as
 * Vite
 * Tailwind CSS
 * React Router
-* React Hook Form + Zod
+* React Hook Form
 * Lucide React
 * React Day Picker
 

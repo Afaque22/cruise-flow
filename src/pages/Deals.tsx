@@ -8,7 +8,6 @@ import {
 } from "lucide-react";
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { Navbar } from "../components/layout/Navbar";
 
 const promotions = [
   {
@@ -71,8 +70,6 @@ const benefits = [
 export default function Deals() {
   return (
     <div className="min-h-screen bg-[#f6f7f9]">
-      <Navbar />
-
       <main>
         <section className="border-b border-slate-200 bg-white">
           <div className="mx-auto max-w-[1440px] px-5 py-12 sm:px-8 sm:py-16 lg:py-20">

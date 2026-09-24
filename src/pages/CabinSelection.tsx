@@ -15,11 +15,8 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import { useState } from "react";
-
-import { Navbar } from "../components/layout/Navbar";
 import { getCruiseById } from "../services/cruiseService";
 import { cabins } from "../data/cabins";
-
 import type { Cabin } from "../types/cabin";
 import type { CabinType, Cruise } from "../types/cruise";
 
@@ -517,8 +514,6 @@ export function CabinSelection() {
   if (!cruise) {
     return (
       <div className="min-h-screen bg-[#f7f8fa]">
-        <Navbar />
-
         <main className="mx-auto flex min-h-[70vh] max-w-[1440px] items-center justify-center px-5 py-16">
           <div className="max-w-md text-center">
             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-100">
@@ -627,8 +622,6 @@ export function CabinSelection() {
 
   return (
     <div className="min-h-screen bg-[#f7f8fa]">
-      <Navbar />
-
       <main className="mx-auto max-w-[1440px] px-5 py-8 sm:px-8 lg:px-10">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <Link

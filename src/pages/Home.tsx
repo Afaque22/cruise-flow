@@ -5,11 +5,8 @@ import {
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
-
-import { Navbar } from "../components/layout/Navbar";
 import { CruiseSearch } from "../components/search/CruiseSearch";
 import { cruises } from "../data/cruises";
-import Footer from "../components/layout/Footer";
 import { Link } from "react-router-dom";
 
 const destinations = [
@@ -38,8 +35,6 @@ const destinations = [
 export function Home() {
   return (
     <div className="min-h-screen bg-slate-50">
-      <Navbar />
-
       <main>
         <section className="relative overflow-hidden bg-slate-950">
           <div
@@ -227,8 +222,6 @@ export function Home() {
             </div>
           </div>
         </section>
-
-        <Footer />
       </main>
     </div>
   );

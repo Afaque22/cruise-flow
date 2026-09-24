@@ -15,8 +15,6 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import { useState } from "react";
-
-import { Navbar } from "../components/layout/Navbar";
 import { getCruiseById } from "../services/cruiseService";
 import type { CabinType, Cruise } from "../types/cruise";
 
@@ -54,7 +52,6 @@ function CruiseDetailsContent({ cruise }: CruiseDetailsContentProps) {
 
   return (
     <div className="min-h-screen bg-[#f7f8fa] text-slate-950">
-      <Navbar />
 
       <main>
         <section className="bg-white">
@@ -638,7 +635,6 @@ function HeroFact({ icon, label, value }: HeroFactProps) {
 function CruiseNotFound() {
   return (
     <div className="min-h-screen bg-[#f7f8fa] text-slate-950">
-      <Navbar />
 
       <main className="mx-auto flex min-h-[70vh] max-w-[1440px] items-center justify-center px-4 py-16 sm:px-6 lg:px-8">
         <div className="max-w-md text-center">

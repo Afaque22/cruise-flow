@@ -12,8 +12,6 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
-import { Navbar } from "../components/layout/Navbar";
-
 const skills = [
   "React Native",
   "React.js",
@@ -75,8 +73,6 @@ function ContactItem({
 export default function About() {
   return (
     <div className="min-h-screen bg-[#f7f8fa]">
-      <Navbar />
-
       <main>
         <section className="relative overflow-hidden bg-slate-950 text-white">
           <div className="absolute -left-32 -top-40 h-96 w-96 rounded-full bg-white/[0.04] blur-3xl" />

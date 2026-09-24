@@ -19,8 +19,6 @@ import {
   type SetStateAction,
 } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-
-import { Navbar } from "../components/layout/Navbar";
 import { cabins } from "../data/cabins";
 import { getCruiseById } from "../services/cruiseService";
 import { DateOfBirthPicker } from "../components/checkout/DateOfBirthPicker";
@@ -915,7 +913,6 @@ export function Checkout() {
   if (!cruise || selectedCabins.length === 0) {
     return (
       <div className="min-h-screen bg-[#f7f8fa]">
-        <Navbar />
 
         <main className="mx-auto flex min-h-[70vh] max-w-[1440px] items-center justify-center px-5 py-16">
           <div className="max-w-md text-center">
@@ -969,7 +966,6 @@ export function Checkout() {
 
   return (
     <div className="min-h-screen bg-[#f7f8fa]">
-      <Navbar />
 
       <main className="mx-auto max-w-[1440px] px-5 py-8 sm:px-8 lg:px-10">
         <div className="flex flex-col gap-5 border-b border-slate-200 pb-7 lg:flex-row lg:items-center lg:justify-between">

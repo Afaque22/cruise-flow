@@ -11,11 +11,14 @@ import Support from "./pages/Support";
 import Destinations from "./pages/Destinations";
 import Deals from "./pages/Deals";
 import { ScrollToTop } from "./components/layout/ScrollToTop";
+import { Navbar } from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 
 function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
 
@@ -33,6 +36,7 @@ function App() {
         <Route path="/destinations" element={<Destinations />} />
         <Route path="/deals" element={<Deals />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

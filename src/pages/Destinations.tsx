@@ -1,7 +1,5 @@
 import { ArrowRight, Compass, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
-
-import { Navbar } from "../components/layout/Navbar";
 import { cruises } from "../data/cruises";
 
 interface Destination {
@@ -69,8 +67,6 @@ function getCruiseCount(destination: string) {
 export default function Destinations() {
   return (
     <div className="min-h-screen bg-[#f7f8fa]">
-      <Navbar />
-
       <main>
         <section className="bg-slate-950 text-white">
           <div className="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 sm:py-20 lg:py-24">

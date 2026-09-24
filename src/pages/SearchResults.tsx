@@ -20,7 +20,6 @@ import { CruiseFilters } from "../components/cruise/CruiseFilters";
 import { CruiseSort, type SortOption } from "../components/cruise/CruiseSort";
 import type { Cruise } from "../types/cruise";
 import type { CruiseSearchParams } from "../types/search";
-import { Navbar } from "../components/layout/Navbar";
 
 const durationOptions = [
   {
@@ -187,8 +186,6 @@ export function SearchResults() {
 
   return (
     <div className="min-h-screen bg-[#f7f8fa] text-slate-950">
-      <Navbar />
-
       <main className="mx-auto max-w-1440px px-4 pb-16 pt-6 sm:px-6 lg:px-8 lg:pt-8">
         <div className="mb-6 flex items-center gap-2 text-xs font-medium text-slate-400">
           <Link to="/" className="transition hover:text-slate-700">

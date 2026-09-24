@@ -1,8 +1,6 @@
 import { ArrowRight, HelpCircle, Mail, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
-import { Navbar } from "../components/layout/Navbar";
-
 const supportTopics = [
   "Finding the right cruise",
   "Cruise and cabin information",
@@ -13,8 +11,6 @@ const supportTopics = [
 export default function Support() {
   return (
     <div className="min-h-screen bg-[#f7f8fa]">
-      <Navbar />
-
       <main className="mx-auto max-w-[900px] px-5 py-14 sm:px-8 lg:py-20">
         <section className="text-center">
           <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-950 text-white">

@@ -11,11 +11,8 @@ import {
 } from "lucide-react";
 import type { ReactNode } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-
-import { Navbar } from "../components/layout/Navbar";
 import { cabins } from "../data/cabins";
 import { getCruiseById } from "../services/cruiseService";
-
 import type { Cabin } from "../types/cabin";
 
 interface BookingGuest {
@@ -178,8 +175,6 @@ export function BookingConfirmation() {
   if (!bookingIsValid || !cruise) {
     return (
       <div className="min-h-screen bg-[#f7f8fa]">
-        <Navbar />
-
         <main className="mx-auto flex min-h-[70vh] max-w-[1440px] items-center justify-center px-5 py-16">
           <div className="max-w-md text-center">
             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-100">
@@ -226,8 +221,6 @@ export function BookingConfirmation() {
 
   return (
     <div className="min-h-screen bg-[#f7f8fa]">
-      <Navbar />
-
       <main className="mx-auto max-w-[1000px] px-5 py-10 sm:px-8 lg:py-14">
         <section className="text-center">
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100">

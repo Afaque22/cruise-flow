@@ -110,6 +110,7 @@ export function CruiseFilters({
             {durations.map((option) => (
               <label
                 key={option.value}
+                onClick={() => onDurationChange(option.value)}
                 className="flex cursor-pointer items-center gap-3 rounded-xl px-2 py-2.5 transition hover:bg-slate-50"
               >
                 <span
@@ -123,15 +124,6 @@ export function CruiseFilters({
                     <Check size={13} strokeWidth={3} />
                   )}
                 </span>
-
-                <input
-                  type="radio"
-                  name="duration"
-                  value={option.value}
-                  checked={duration === option.value}
-                  onChange={() => onDurationChange(option.value)}
-                  className="sr-only"
-                />
 
                 <span className="text-sm font-medium text-slate-700">
                   {option.label}

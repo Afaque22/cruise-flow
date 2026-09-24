@@ -9,18 +9,15 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-
 import {
   getAvailableCruiseLines,
   getAvailableDestinations,
   getAvailablePorts,
   searchCruises,
 } from "../services/cruiseService";
-
 import { CruiseCard } from "../components/cruise/CruiseCard";
 import { CruiseFilters } from "../components/cruise/CruiseFilters";
 import { CruiseSort, type SortOption } from "../components/cruise/CruiseSort";
-
 import type { Cruise } from "../types/cruise";
 import type { CruiseSearchParams } from "../types/search";
 import { Navbar } from "../components/layout/Navbar";
@@ -48,20 +45,52 @@ const durationOptions = [
   },
 ];
 
+type FilterState = {
+  destination: string;
+  departurePort: string;
+  date: string;
+  cruiseLine: string;
+  ship: string;
+  duration: string;
+  minPrice: string;
+  maxPrice: string;
+  guests: number;
+};
+
 export function SearchResults() {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
+
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+
   const [sort, setSort] = useState<SortOption>("recommended");
 
-  const destination = searchParams.get("destination") || "";
-  const departurePort = searchParams.get("port") || "";
-  const date = searchParams.get("date") || "";
-  const cruiseLine = searchParams.get("line") || "";
-  const ship = searchParams.get("ship") || "";
-  const duration = searchParams.get("duration") || "";
-  const minPrice = searchParams.get("minPrice") || "";
-  const maxPrice = searchParams.get("maxPrice") || "";
-  const guests = Number(searchParams.get("guests")) || 2;
+  /*
+   * URL is only used to initialize the filters.
+   * After initialization, all filtering is handled locally.
+   */
+  const [filters, setFilters] = useState<FilterState>(() => ({
+    destination: searchParams.get("destination") || "",
+    departurePort: searchParams.get("port") || "",
+    date: searchParams.get("date") || "",
+    cruiseLine: searchParams.get("line") || "",
+    ship: searchParams.get("ship") || "",
+    duration: searchParams.get("duration") || "",
+    minPrice: searchParams.get("minPrice") || "",
+    maxPrice: searchParams.get("maxPrice") || "",
+    guests: Number(searchParams.get("guests")) || 2,
+  }));
+
+  const {
+    destination,
+    departurePort,
+    date,
+    cruiseLine,
+    ship,
+    duration,
+    minPrice,
+    maxPrice,
+    guests,
+  } = filters;
 
   const query: CruiseSearchParams = {
     destination: destination || undefined,
@@ -88,46 +117,61 @@ export function SearchResults() {
 
   const sortedResults = sortCruises(results, sort);
 
-  function updateFilter(key: string, value: string) {
-    const next = new URLSearchParams(searchParams);
+  function updateFilter(key: keyof FilterState, value: string) {
+    setFilters((prev) => {
+      const next = { ...prev };
 
-    if (value) {
-      next.set(key, value);
-    } else {
-      next.delete(key);
-    }
+      if (prev[key] === value) {
+        next[key] = "" as never;
+      } else {
+        next[key] = value as never;
+      }
 
-    if (key === "destination") {
-      next.delete("port");
-      next.delete("line");
-      next.delete("ship");
-      next.delete("date");
-    }
+      if (key === "destination") {
+        next.departurePort = "";
+        next.cruiseLine = "";
+        next.ship = "";
+        next.date = "";
+      }
 
-    if (key === "port") {
-      next.delete("line");
-      next.delete("ship");
-      next.delete("date");
-    }
+      if (key === "departurePort") {
+        next.cruiseLine = "";
+        next.ship = "";
+        next.date = "";
+      }
 
-    if (key === "line") {
-      next.delete("ship");
-      next.delete("date");
-    }
+      if (key === "cruiseLine") {
+        next.ship = "";
+        next.date = "";
+      }
 
-    if (key === "ship") {
-      next.delete("date");
-    }
+      if (key === "ship") {
+        next.date = "";
+      }
 
-    setSearchParams(next);
+      return next;
+    });
+  }
+
+  function updatePriceFilter(key: "minPrice" | "maxPrice", value: string) {
+    setFilters((prev) => ({
+      ...prev,
+      [key]: value,
+    }));
   }
 
   function clearFilters() {
-    const next = new URLSearchParams();
-
-    next.set("guests", String(guests));
-
-    setSearchParams(next);
+    setFilters((prev) => ({
+      destination: "",
+      departurePort: "",
+      date: "",
+      cruiseLine: "",
+      ship: "",
+      duration: "",
+      minPrice: "",
+      maxPrice: "",
+      guests: prev.guests,
+    }));
   }
 
   const activeFilterCount = [
@@ -269,11 +313,19 @@ export function SearchResults() {
                 onDestinationChange={(value) =>
                   updateFilter("destination", value)
                 }
-                onDeparturePortChange={(value) => updateFilter("port", value)}
-                onCruiseLineChange={(value) => updateFilter("line", value)}
+                onDeparturePortChange={(value) =>
+                  updateFilter("departurePort", value)
+                }
+                onCruiseLineChange={(value) =>
+                  updateFilter("cruiseLine", value)
+                }
                 onDurationChange={(value) => updateFilter("duration", value)}
-                onMinPriceChange={(value) => updateFilter("minPrice", value)}
-                onMaxPriceChange={(value) => updateFilter("maxPrice", value)}
+                onMinPriceChange={(value) =>
+                  updatePriceFilter("minPrice", value)
+                }
+                onMaxPriceChange={(value) =>
+                  updatePriceFilter("maxPrice", value)
+                }
                 onClear={clearFilters}
               />
             </div>
@@ -372,11 +424,19 @@ export function SearchResults() {
                 onDestinationChange={(value) =>
                   updateFilter("destination", value)
                 }
-                onDeparturePortChange={(value) => updateFilter("port", value)}
-                onCruiseLineChange={(value) => updateFilter("line", value)}
+                onDeparturePortChange={(value) =>
+                  updateFilter("departurePort", value)
+                }
+                onCruiseLineChange={(value) =>
+                  updateFilter("cruiseLine", value)
+                }
                 onDurationChange={(value) => updateFilter("duration", value)}
-                onMinPriceChange={(value) => updateFilter("minPrice", value)}
-                onMaxPriceChange={(value) => updateFilter("maxPrice", value)}
+                onMinPriceChange={(value) =>
+                  updatePriceFilter("minPrice", value)
+                }
+                onMaxPriceChange={(value) =>
+                  updatePriceFilter("maxPrice", value)
+                }
                 onClear={clearFilters}
               />
 
